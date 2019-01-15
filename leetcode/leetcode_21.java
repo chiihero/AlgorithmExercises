@@ -33,11 +33,7 @@ public class leetcode_21 {
 
 
     public static void main(String[] args) {
-        int[] input=new int[]{1,2,4};
-        int[] input2=new int[]{1,3,4};
 
-        ListNode listNode1=buildListNode(input);
-        ListNode listNode2=buildListNode(input2);
         
         mergeTwoLists(listNode1,listNode2);
     }
