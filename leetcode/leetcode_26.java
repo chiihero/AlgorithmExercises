@@ -42,7 +42,7 @@ for (int i = 0; i < len; i++) {
 import java.util.Stack;
 
 public class leetcode_26 {
-    public static int removeElement(int[] nums, int val) {
+    public static int removeDuplicates(int[] nums) {
         int j = 0;
         for (int i=1,len=nums.length;i<len;i++) {
             if (nums[i]!=nums[j]) {
