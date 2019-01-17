@@ -29,11 +29,7 @@ public class leetcode_14 {
     }
 
     public static void main(String[] args) {
-        
-        args[0] = "flower";
-        args[1] = "flow";
-        args[2] = "flight";
-
-        longestCommonPrefix(args);
+        String[] names ={"flower","flow","flight"};
+        longestCommonPrefix(names);
     }
 }

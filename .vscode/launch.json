@@ -2,6 +2,12 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - leetcode_35",
+            "request": "launch",
+            "mainClass": "leetcode_35"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - leetcode_28",
             "request": "launch",
             "mainClass": "leetcode_28"
