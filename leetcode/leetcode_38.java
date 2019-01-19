@@ -21,7 +21,7 @@
 输入: 4
 输出: "1211"
  */
-public class leetcode_36 {
+public class leetcode_38 {
     public static String countAndSay(int n) {
 
         return null;
