@@ -1,4 +1,3 @@
-import com.sun.org.apache.regexp.internal.recompile;
 
 /*
 66. 加一
@@ -22,16 +21,19 @@ import com.sun.org.apache.regexp.internal.recompile;
  */
 public class leetcode_66 {
     public static int[] plusOne(int[] digits) {
-        for (int i = digits.length-1; i > 0; i--) {
-            digits[i] += 1;
-            if (digits[i] > 10){
-                digits[i - 1] += 1;
-                digits[i]=0;
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i] += 1;
+                return digits;
             }
-            else
-                break;
+            digits[i] = 0;
         }
-        return digits;
+
+        int[] res = new int[digits.length + 1];
+        res[0] = 1;
+        System.arraycopy(digits, 0, res, 1, digits.length);
+        return res;
+
     }
 
     public static void main(String[] args) {
@@ -39,6 +41,9 @@ public class leetcode_66 {
         System.out.println(plusOne(nums));
         int[] nums2 = { 1, 9, 9 };
         System.out.println(plusOne(nums2));
-
+        int[] nums3 = { 0 };
+        System.out.println(plusOne(nums3));
+        int[] nums4 = { 9 };
+        System.out.println(plusOne(nums4));
     }
 }
