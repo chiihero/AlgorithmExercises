@@ -16,33 +16,31 @@
  */
 public class leetcode_28 {
     public static int strStr(String haystack, String needle) {
-        if(needle.length()==0||haystack.length()<needle.length())return 0;
+        int hlen = haystack.length();
+        int nlen = needle.length();
+        if(nlen==0)return 0;
+        if(hlen<nlen)return -1;
         char[] haystackch=haystack.toCharArray();
         char[] needlech=needle.toCharArray();
-        boolean flag =false;
-        for (int i=0,len=haystackch.length;i<len;i++) {
+        for (int i=0,len=hlen-nlen;i<=len;i++) {
             if (haystackch[i]==needlech[0]) {
-                for(int j=0,nlen=needlech.length;j<nlen;j++){
-                    if(haystackch[i+j]==needlech[j]){
-                        flag =true;
-                    }else {
-                        flag =false;
+                for(int j=0;j<nlen;j++){
+                    if(haystackch[i+j]!=needlech[j]){
                         break;
                     }
-                }
-                if(flag==true)
+                    if(j==nlen-1)
                     return i;
-                
+                }
             }
         }
         return -1;
-    }
 
+    }
 
     public static void main(String[] args) {
         System.out.println(strStr("a",""));
-        System.out.println(strStr("hello","ll"));
-
-        strStr("aaaa a" ,"bba");
+        System.out.println(strStr("a","a"));
+        System.out.println(strStr("mississippi","issipi"));
+        System.out.println(strStr("mississippi", "issip"));
     }
 }
