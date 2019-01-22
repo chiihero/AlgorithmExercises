@@ -26,24 +26,29 @@
 */
 public class leetcode_70 {
     public static int climbStairs(int n) {
-        int low = 0;
-        int high = x;
-        while(low<=high){
-            long mid = (long)(low + high)/2;
-            if(mid*mid < x)
-                low = (int)mid + 1;
-            else if(mid*mid > x)
-                high = (int)mid - 1;
-            else
-                return (int)mid;
-            System.out.printf("%d\t%d\t%d\n",mid,high,low);
+        if (n<=3) {
+            return n;
         }
-        return high;
+        return climbStairs(n-1)+climbStairs(n-2);
 
     }
+    public static int climbStairs2(int n) {
+        if (n<=2) {
+            return n;
+        }
+        int f1 =0,f2=1;
+        int res = 0;
+        for(int i=3;i<=n;i++){
+            res =f1+f2;
+            f1=f2;
+            f2 =res;
+        }
+        return res;
+    }
+    
 
     public static void main(String[] args) {
-        System.out.println(mySqrt(4));
-        System.out.println(mySqrt(8));
+        System.out.println(climbStairs(3));
+        System.out.println(climbStairs(8));
     }
 }
