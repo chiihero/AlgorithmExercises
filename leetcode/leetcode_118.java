@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
 
 /*
 118. 杨辉三角

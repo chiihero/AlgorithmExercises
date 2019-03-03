@@ -24,7 +24,6 @@
 输入: "{[]}"
 输出: true
 */
-import java.util.Stack;
 public class leetcode_20 {
     public static boolean isValid(String s) {
         Stack<Character> stack = new Stack<>();

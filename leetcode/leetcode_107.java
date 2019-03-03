@@ -1,14 +1,10 @@
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /*
 107. 二叉树的层次遍历 II
-给定�?个二叉树，返回其节点值自底向上的层次遍历�? （即按从叶子节点�?在层到根节点�?在的层，逐层从左向右遍历�?
+给定�?个二叉树，返回其节点值自底向上的层次遍历�? （即按从叶子节点�?在层到根节点�?在的层，逐层从左向右遍历�?
 
-例如�?
-给定二叉�? [3,9,20,null,null,15,7],
+例如�?
+给定二叉�? [3,9,20,null,null,15,7],
 
     3
    / \

@@ -39,8 +39,6 @@ for (int i = 0; i < len; i++) {
 
 
  */
-import java.util.Stack;
-
 public class leetcode_26 {
     public static int removeDuplicates(int[] nums) {
         int j = 0;
