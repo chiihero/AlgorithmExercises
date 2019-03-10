@@ -1,25 +1,24 @@
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-//        int n=28;
-//        StringBuffer str = new StringBuffer();
-//        int tmp = 0;
+        BigInteger n = BigInteger.valueOf(31);
+//        int total = 0;
 //        while (n > 0) {
-//            n--;
-//            tmp = n % 26;
-//            str.insert(0,(char) (tmp + 'A'));
-//            n /= 26;
+//            total += n/5;
+//            n /= 5;
+//
 //        }
-//        System.out.println(str.toString());
 
-        String s="AB";
-        int sum = 0;
-        for (int i = 0,len =s.length(); i <len ; i++) {
-            sum = sum * 26 + (int)s.charAt(i) - 64;
+        BigInteger k= BigInteger.valueOf(n-1);
+        while (n.equals(0)){
 
+            n = n.multiply(k);
+            k.subtract(BigInteger.valueOf(1));
         }
-        System.out.println(sum);
+        System.out.println(n);
     }
 }
