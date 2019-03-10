@@ -21,7 +21,7 @@
 如果多次调用这个函数，你将如何优化你的算法？
 */
 
-public class leetcode_191 {
+public class leetcode_192 {
       // you need treat n as an unsigned value
       public int hammingWeight(int n) {
             int ans = 0;

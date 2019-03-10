@@ -36,7 +36,7 @@ https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/12/14/160_example_3
 
 */
 
-public class leetcode_155 {
+public class leetcode_160 {
     public  ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if(headA==null||headB==null) return null;
         ListNode pA = headA, pB = headB;
