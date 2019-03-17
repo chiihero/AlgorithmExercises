@@ -25,8 +25,8 @@ public class leetcode_191 {
       // you need treat n as an unsigned value
       public int hammingWeight(int n) {
             int ans = 0;
-            while (n!=0) {
-                  ans += n % 2;
+            for(int i = 0; i < 32; i++){      
+                  ans += n & 1;
                   n >>= 1;
             }
             return ans;
