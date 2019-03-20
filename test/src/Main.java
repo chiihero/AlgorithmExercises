@@ -5,20 +5,24 @@ import java.util.Stack;
 public class Main {
 
     public static void main(String[] args) {
-        BigInteger n = BigInteger.valueOf(31);
-//        int total = 0;
-//        while (n > 0) {
-//            total += n/5;
-//            n /= 5;
-//
-//        }
+        long startTime = System.currentTimeMillis();    //获取开始时间
+        int n=50;
+        boolean[] is_composite = new boolean[n + 1];
+        int count = n / 2;
+        int stop_at= (int) Math.sqrt(n)+1;
 
-        BigInteger k= BigInteger.valueOf(n-1);
-        while (n.equals(0)){
-
-            n = n.multiply(k);
-            k.subtract(BigInteger.valueOf(1));
+        for (int i = 3; i <stop_at; i += 2) {
+            if (is_composite[i])
+                continue;
+            for (int j = i * i; j < n; j += 2 * i) {
+                if (!is_composite[j]) {
+                    count--;
+                    is_composite[j] = true;
+                }
+            }
         }
-        System.out.println(n);
+        System.out.println(count);
+        long endTime = System.currentTimeMillis();    //获取结束时间
+        System.out.println("程序运行时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
     }
 }
