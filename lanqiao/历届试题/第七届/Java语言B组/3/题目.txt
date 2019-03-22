@@ -1,0 +1,50 @@
+
+凑算式
+
+     B      DEF
+A + --- + ------- = 10
+     C      GHI
+     
+（如果显示有问题，可以参见【图1.jpg】）
+	 
+	 
+这个算式中A~I代表1~9的数字，不同的字母代表不同的数字。
+
+比如：
+6+8/3+952/714 就是一种解法，
+5+3/1+972/486 是另一种解法。
+
+这个算式一共有多少种解法？
+
+注意：你提交应该是个整数，不要填写任何多余的内容或说明性文字。
+   static int count=0;
+    public static boolean check(int[] arr) {
+        double q=arr[0];
+        double w=arr[1]*1.00/arr[2];
+        double e=(arr[3]*100+arr[4]*10+arr[5])*1.00/(arr[6]*100+arr[7]*10+arr[8]);
+        return q + w + e == 10.00;
+    }
+
+    public static void dfs(int[] arr,int n) {
+        if (n == 9) {
+            if(check(arr))count++;
+        }
+        for (int i = n; i <9 ; i++) {
+            int t = arr[i];
+            arr[i] = arr[n];
+            arr[n] = t;
+            dfs(arr, n + 1);
+            t = arr[i];
+            arr[i] = arr[n];
+            arr[n] = t;
+        }
+    }
+    public static void main(String[] args) {
+        long startTime = System.currentTimeMillis();    //获取开始时间
+        int[] arr ={1,2,3,4,5,6,7,8,9};
+        dfs(arr,0 );
+        System.out.println(count);
+
+        long endTime = System.currentTimeMillis();    //获取结束时间
+        System.out.println("程序运行时间：" + (endTime - startTime) + "ms");    //输出程序运行时间
+    }

@@ -10,3 +10,45 @@
 注意：旋转或镜像后相同的算同一种填法。
 
 请提交表示方案数目的整数，不要填写任何其它内容。
+public class Test {
+	
+	static int[] v = new int[]{1,2,3,4,5,6,8,9,10,12};
+	static boolean[] book = new boolean[13]; 
+	static int[] result = new int[10];
+	static int sum = 0;
+	
+	static void dfs(int n) {
+		if(n == 10) {
+			int t = result[0]+result[2]+result[5]+result[8];
+			if(t == result[0]+result[3]+result[6]+result[9]  
+				&& t == result[1]+result[2]+result[3]+result[4]
+				&& t == result[1]+result[5]+result[7]+result[9]
+				&& t == result[4]+result[6]+result[7]+result[8])
+		 		sum++;
+	            return;
+	        }
+		for(int i = 0; i < 10; i++) {
+			if(!book[v[i]]) {
+				result[n] = v[i]; // 记录当前的数
+				book[v[i]] =true; // 走过标记
+				dfs(n+1);
+				book[v[i]] = false; // 走完复位
+			}
+		}
+	}
+	
+    static void swap(int m, int n) 
+    { 
+        int temp = v[m];
+        v[m] = v[n]; 
+        v[n] = temp; 
+    }
+	
+	public static void main(String[] args) {
+		dfs(0);
+		System.out.println(sum / 10);
+		
+	    return ;
+	}
+	
+}

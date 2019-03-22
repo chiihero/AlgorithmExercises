@@ -42,3 +42,83 @@ CPU消耗  < 2000ms
 注意：不要使用package语句。不要使用jdk1.7及以上版本的特性。
 注意：主类的名字必须是：Main，否则按无效代码处理。
 
+简单矩阵快速幂的应用，求出递推矩阵，编程实现即可。
+
+递推式：设dp[ i ][ j ]表示第 i 个骰子 j 面朝上的摆法有几种
+
+
+递推矩阵：(根据递推式很容易可以写出)
+
+
+矩阵T中 元素 T[ i ][ j ] 表示 i 面和 j 面的冲突关系
+
+矩阵A中 元素A[ 1 ][ j ]表示 第1个骰子，j 面朝上的摆法有多少种，A乘一次T算出的是2个骰子。
+
+最后，当一个面朝上的时候，骰子可以旋转，让别的面朝向不同，得到不同的摆法，所以最后要在得出的结果乘以 4^n
+
+题目代码：
+
+    #include<cstdio>
+    #include<cstring>
+    #include<cmath>
+    #define MOD 1000000007
+    #define LL long long
+    using namespace std;
+     
+    struct Matrix{
+    	LL v[6][6];
+    	Matrix(){memset(v,0,sizeof(v));}
+    };
+     
+    Matrix mul(Matrix x ,Matrix y){
+    	Matrix ans;
+    	for(int i=0 ;i<6 ;i++){
+    		for(int j=0 ;j<6 ;j++){
+    			for(int k=0 ;k<6 ;k++){
+    				ans.v[i][j] = (ans.v[i][j] + x.v[i][k]*y.v[k][j])%MOD; 
+    			}
+    		}
+    	}
+    	return ans;
+    }
+     
+    Matrix q_pow(Matrix x,int k){
+    	Matrix ans;
+    	for(int i=0 ;i<6 ;i++) ans.v[i][i] = 1;
+    	while(k){
+    		if(k&1) ans = mul(ans,x);
+    		x = mul(x,x);
+    		k >>= 1;
+    	}
+    	return ans;
+    }
+     
+    int n,m,a,b;;
+     
+    int main(){
+    	//初始化 
+    	Matrix T,ans;
+    	for(int i=0 ;i<6 ;i++){
+    		for(int j=0 ;j<6 ;j++){
+    			T.v[i][j] = 1;
+    		}
+    	}
+    	//数据输入 
+    	scanf("%d%d",&n,&m);
+    	for(int i=0 ;i<m ;i++){
+    		scanf("%d%d",&a,&b);
+    		T.v[a-1][b-1] = 0; T.v[b-1][a-1] = 0;
+    	}	
+    	//数据处理 
+    	ans = q_pow(T,n-1);
+    	
+    	int sum = 0;
+    	for(int i=0 ;i<6 ;i++){
+    		for(int j=0 ;j<6 ;j++){
+    			sum = (sum+ans.v[i][j])%MOD;
+    		}
+    	}
+    	//结果输出 
+    	printf("%d\n",(sum*((int)pow(4,n))%MOD)%MOD);
+    	
+    	return 0;
